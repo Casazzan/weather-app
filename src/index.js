@@ -3,4 +3,10 @@ import ReactDom from 'react-dom'
 
 import App from './App'
 
-ReactDom.render(<App />, document.getElementById('root'));
+import RainIcon from './gifs/Rain.svg'
+
+//list of possible descriptions: Rain, Thunderstorm, Drizzle, Snow, Clouds, Clear/Else case
+const gifURLS = {
+};
+
+ReactDom.render(<img src={RainIcon} />, document.getElementById('root'));
