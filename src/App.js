@@ -1,5 +1,6 @@
 import React from 'react'
 import SearchBar from './Components/SearchBar'
+import WeatherGif from './Components/WeatherGif'
 
 class App extends React.Component {
 
@@ -9,10 +10,6 @@ class App extends React.Component {
             loading: false,
             weatherData: false,
         }
-    }
-
-    searchFromInput(input) {
-
     }
 
     async fetchData(city) {
@@ -41,17 +38,31 @@ class App extends React.Component {
         }
     }
 
-    render() {
-        let mainContent;
+    getGif() {
+        if (!this.state.weatherData) return false;
+
+    }
+
+    getMainContent() {
         if (this.state.loading) {
-            mainContent = <div>Loading...</div>;
+            return <div>Loading...</div>;
         }
         else if (this.state.weatherData) {
-            mainContent = <div>{this.state.weatherData.name} Fi</div>;
+            return <div>
+                {this.state.weatherData.feelsLike}
+                <WeatherGif iconDescription={this.state.weatherData.iconDescription} />
+            </div>;
         }
         else if (this.state.city) {
-            mainContent = <div>{this.state.city} was not found</div>;
+            return <div>{this.state.city} was not found</div>;
         }
+        else {
+            return null;
+        }
+    }
+
+    render() {
+        let mainContent = this.getMainContent();
         return (
             <div id="main">
                 <img src="gifs/Clear.svg" alt="" />
