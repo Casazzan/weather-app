@@ -1,6 +1,6 @@
 import React from 'react'
 import SearchBar from './Components/SearchBar'
-import WeatherGif from './Components/WeatherGif'
+import MainCard from './Components/MainCard'
 
 class App extends React.Component {
 
@@ -19,8 +19,9 @@ class App extends React.Component {
         try {
             const response = await fetch('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=1ba3cf989b72215565491bbe5ea27fa3');
             const allData = await response.json();
+            console.log('allData: ', allData);
             const newWeatherData = {
-                name: allData.name,
+                name: allData.name + ", " + allData.sys.country,
                 temp: (allData.main.temp - 273.15).toFixed(1), //in C
                 feelsLike: (allData.main.feels_like - 273.15).toFixed(1),
                 iconDescription: allData.weather[0].main,
@@ -38,20 +39,12 @@ class App extends React.Component {
         }
     }
 
-    getGif() {
-        if (!this.state.weatherData) return false;
-
-    }
-
     getMainContent() {
         if (this.state.loading) {
             return <div>Loading...</div>;
         }
         else if (this.state.weatherData) {
-            return <div>
-                {this.state.weatherData.feelsLike}
-                <WeatherGif iconDescription={this.state.weatherData.iconDescription} />
-            </div>;
+            return <MainCard data={this.state.weatherData} />
         }
         else if (this.state.city) {
             return <div>{this.state.city} was not found</div>;
