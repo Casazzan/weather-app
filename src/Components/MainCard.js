@@ -15,10 +15,16 @@ function MainCard(props) {
     return (
         <div id="weather-card">
             <div className="city">{props.data.name}</div>
-            <WeatherGif iconDescription={props.data.iconDescription} />
-            <div className="temp">{props.data.temp} °C</div>
-            <div className="feels-like">Feels Like: {props.data.feelsLike} °C</div>
-            <div className="description">{capitalizeFirstLetter(props.data.description)}</div>
+            <div className="info-container">
+                <div className="weather-info">
+                    <WeatherGif iconDescription={props.data.iconDescription} />
+                    <div className="description">{capitalizeFirstLetter(props.data.description)}</div>
+                </div>
+                <div className="temp-info">
+                    <div className="temp">{props.data.temp} °C</div>
+                    <div className="feels-like">Feels Like: {props.data.feelsLike} °C</div>
+                </div>
+            </div>
         </div>
     )
 }
