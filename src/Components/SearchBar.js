@@ -14,7 +14,7 @@ function SearchBar(props) {
                 type="text"
                 id="search-bar"
                 onKeyDown={onKeyPressed}
-                placeholder="City name"
+                placeholder="Enter city name"
             >
             </input>
         </div>

@@ -57,7 +57,6 @@ class App extends React.Component {
         let mainContent = this.getMainContent();
         return (
             <div id="main">
-                <img src="gifs/Clear.svg" alt="" />
                 <SearchBar searchFunction={(city) => this.fetchData(city)} />
                 {mainContent}
             </div>
