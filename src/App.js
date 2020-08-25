@@ -1,6 +1,8 @@
 import React from 'react'
+
 import SearchBar from './Components/SearchBar'
 import MainCard from './Components/MainCard'
+import ToggleSwitch from './Components/toggle-switch/ToggleSwitch'
 
 class App extends React.Component {
 
@@ -57,6 +59,11 @@ class App extends React.Component {
         let mainContent = this.getMainContent();
         return (
             <div id="main">
+                <ToggleSwitch
+                    isToggledl={""}
+                    optionOneString={""}
+                    optionTwoString={""}
+                />
                 <SearchBar searchFunction={(city) => this.fetchData(city)} />
                 {mainContent}
             </div>

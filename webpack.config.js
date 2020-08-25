@@ -3,6 +3,9 @@ const webpack = require('webpack');
 module.exports = {
     entry: './src/index.js',
     module: {
+        loaders: [
+            { test: /\.css$/, loader: "style-loader!css-loader" },
+        ],
         rules: [
             //...
             {
